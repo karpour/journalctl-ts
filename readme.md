@@ -103,7 +103,7 @@ const journalCtl = new JournalCtl({
 });
 ```
 
-Filtering by dates is possible by setting `from` and/or `until`. If `until` is set, tailing will be disabled.
+Filtering by dates is possible by setting `since` and/or `until`. If `until` is set, tailing will be disabled.
 
 ```typescript
 // Filter from 2022-01-01 12:00:00 until 2022-01-03 00:00:00
