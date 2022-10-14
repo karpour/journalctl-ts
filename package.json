@@ -1,0 +1,59 @@
+{
+  "name": "journalctl-ts",
+  "version": "0.1.0",
+  "description": "A journalctl client for node, written in Typescript",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/esm/types/index.d.ts",
+        "default": "./lib/esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/cjs/types/index.d.ts",
+        "default": "./lib/cjs/index.js"
+      }
+    }
+  },
+  "types": "./lib/cjs/types/index.d.ts",
+  "main": "lib/cjs/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "scripts": {
+    "test": "ts-mocha -p tsconfig.cjs.json src/**/*.spec.ts",
+    "prepack": "npm run test && npm run build",
+    "clean": "rm -rf ./lib",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p ./tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
+    "build:cjs": "tsc -p ./tsconfig.cjs.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karpour/journalctl-ts.git"
+  },
+  "keywords": [
+    "journalctl",
+    "logging",
+    "log",
+    "systemd"
+  ],
+  "author": "Thomas Novotny",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karpour/journalctl-ts/issues"
+  },
+  "homepage": "https://github.com/karpour/journalctl-ts#readme",
+  "devDependencies": {
+    "typescript": "^4.8.3",
+    "@types/node": "^18.8.4",
+    "chai": "^4.3.6",
+    "@types/chai": "^4.3.3",
+    "ts-mocha": "^10.0.0",
+    "@types/mocha": "^10.0.0"
+  }
+}
