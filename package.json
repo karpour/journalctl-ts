@@ -29,7 +29,7 @@
     "prepack": "npm run test && npm run build",
     "clean": "rm -rf ./lib",
     "build": "npm run clean && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc -p ./tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs && echo '{\"type\": \"module\"}' >> lib/esm/package.json",
+    "build:esm": "tsc -p ./tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs && sed -i \"s/from '\\(.*\\)';/from '\\1.js';/g\" lib/esm/index.mjs && echo '{\"type\": \"module\"}' >> lib/esm/package.json",
     "build:cjs": "tsc -p ./tsconfig.cjs.json"
   },
   "repository": {

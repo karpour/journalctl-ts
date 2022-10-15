@@ -1,4 +1,4 @@
-export * from './JournalCtl.js';
-export * from './JournalDEntry.js';
-import JournalCtl from './JournalCtl.js';
+export * from './JournalCtl';
+export * from './JournalDEntry';
+import JournalCtl from './JournalCtl';
 export default JournalCtl;
